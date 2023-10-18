@@ -44,7 +44,7 @@ char *readline(char *prompt)
 	prompt = isatty(STDIN_FILENO) ? prompt : "";
 
 	/* display prompt */
-	write(STDOUT_FILENO, prompt, _strlen(prompt));
+	write(STDOUT_FILENO, prompt, ft_strlen(prompt));
 
 	/* read input using getline */
 	read = getline(&line, &len, stdin);
@@ -78,7 +78,7 @@ int main(__attribute__((unused))int ac, char **av, char **env)
 	char *line = NULL;
 	int line_count = 0;
 
-	while (1337)
+	while (42)
 	{
 		/* read input */
 		line = readline("$ ");
@@ -99,12 +99,12 @@ int main(__attribute__((unused))int ac, char **av, char **env)
 			line = NULL;
 			continue;
 		}
-		if (_strcmp(tokens[0], "exit") == 0)
+		if (ft_strcmp(tokens[0], "exit") == 0)
 		{
 			free_resources(&line, &tokens);
 			exit(0);
 		}
-		else if (_strcmp(tokens[0], "env") == 0)
+		else if (ft_strcmp(tokens[0], "env") == 0)
 			h_env(env);
 		else if (access(tokens[0], F_OK) != -1)
 			execute(tokens, env, av[0]); /* if it is, execute it */
