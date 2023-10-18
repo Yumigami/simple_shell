@@ -70,7 +70,7 @@ typedef struct s_env
 } env_t;
 
 /**
- * struct builtin to builtin command
+ * struct builtin - builtin command
  * @name: name of the builtin
  * @func: function to execute builtin
  */

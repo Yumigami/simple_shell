@@ -12,7 +12,7 @@ int is_buildin(char *cmd)
 
 	for (i = 0; buildins[i]; i++)
 	{
-		if (_strcmp(cmd, buildins[i]) == 0)
+		if (ft_strcmp(cmd, buildins[i]) == 0)
 			return (1);
 	}
 	return (0);
@@ -31,8 +31,8 @@ void execute_buildin(char **tokens, char **env, char *bin, int line_nbr)
 	(void)bin;
 	(void)line_nbr;
 
-	if (_strcmp(tokens[0], "exit") == 0)
+	if (ft_strcmp(tokens[0], "exit") == 0)
 		exit(0);
-	else if (_strcmp(tokens[0], "env") == 0)
+	else if (ft_strcmp(tokens[0], "env") == 0)
 		h_env(env);
 }

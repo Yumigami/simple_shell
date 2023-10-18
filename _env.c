@@ -12,10 +12,10 @@ int h_env(char **env)
 	while (env[i])
 	{
 		/* check if '=' is present */
-		if (_strchr(env[i], '='))
+		if (ft_strchr(env[i], '='))
 		{
 			/* print the env variable */
-			write(STDOUT_FILENO, env[i], _strlen(env[i]));
+			write(STDOUT_FILENO, env[i], ft_strlen(env[i]));
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		i++;
@@ -37,14 +37,14 @@ char *in_path(char *cmd, char **paths)
 
 	while (paths[i])
 	{
-		_memset(tmp, 0, 1024);
-		_strcpy(tmp, paths[i]);
-		_strcat(tmp, "/");
-		_strcat(tmp, cmd);
+		ft_memset(tmp, 0, 1024);
+		ft_strcpy(tmp, paths[i]);
+		ft_strcat(tmp, "/");
+		ft_strcat(tmp, cmd);
 		if (access(tmp, F_OK) == 0)
 		{
 			free(cmd);
-			return (_strdup(tmp));
+			return (ft_strdup(tmp));
 		}
 		i++;
 	}
@@ -63,7 +63,7 @@ char **get_paths(char **env)
 
 	while (env[i])
 	{
-		if (_strncmp(env[i], "PATH=", 5) == 0)
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
 		{
 			paths = strtow(env[i] + 5, ':');
 			break;
